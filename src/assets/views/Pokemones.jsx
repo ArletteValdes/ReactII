@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 
 import Cargando from "../components/Cargando";
 
-const Pokemones=()=> {
+const Pokemones = () => {
   const [pokemones, setPokemones] = useState(null);
   const navigate = useNavigate();
   const getMenus = async () => {
@@ -26,7 +26,7 @@ const Pokemones=()=> {
   const getKey = (url) => {
     let sumaStr = "";
     const arrayURL = url.split("");
-    for (let i = 34; i < arrayURL.length - 1; i++) {
+    for (let i = 30; i < arrayURL.length - 1; i++) {
       const character = arrayURL[i];
       sumaStr = sumaStr + character;
     }
@@ -37,10 +37,10 @@ const Pokemones=()=> {
 
   return (
     <div className="container my-4 d-flex flex-column align-items-center">
-      <h4>Selecciona un pokemón para ver sus características</h4>
+      <h4>Encuentra a tu compañero</h4>
       <Form.Select
         className="pokeForm my-3"
-        onChange={(e) => navigate(`/pokemons/${e.target.value}`)}
+        onChange={(e) => navigate(`/pokemones/${e.target.value}`)}
         aria-label="Default select example"
       >
         <option>Select a pokemon</option>
@@ -54,7 +54,6 @@ const Pokemones=()=> {
       </Form.Select>
     </div>
   );
-}
+};
 
-
-export default Pokemones
+export default Pokemones;

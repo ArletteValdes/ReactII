@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import Cargando from "../components/Cargando";
 
-const Menu =() =>{
+const PokeDex= () => {
   const params = useParams();
   console.log(params);
   const navigate = useNavigate();
@@ -19,14 +19,18 @@ const Menu =() =>{
       if (!res) throw `${res.ok}`;
       const data = await res.json();
       setPokemon(data);
+
+
+
+      
     } catch (error) {
       setError(error);
-      navigate("/pokemons");
+      navigate("/pokemones");
     } finally {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     getMenu();
   }, []);
@@ -36,7 +40,7 @@ const Menu =() =>{
   };
 
   if (loading) return <Cargando />;
-  if (!pokemon) return <h1>{`No existe el Pókemon n°: ${params.id}`}</h1>;
+  if (!pokemon) return <h1>{`El Pokemon n° ${params.id} no existe`}</h1>;
 
   return (
     <div className="container text-center">
@@ -69,12 +73,12 @@ const Menu =() =>{
 
       <button
         className="btn btn-dark my-3"
-        onClick={() => navigate("/pokemons")}
+        onClick={() => navigate("/pokemones")}
       >
-        Volver 
+        Volver
       </button>
     </div>
   );
-}
+};
 
-export default Menu
+export default PokeDex;
